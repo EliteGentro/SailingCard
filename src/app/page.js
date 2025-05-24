@@ -40,26 +40,17 @@ export default function Home() {
 
 
   const loadSailingData = async () => {
-    /*
-    try {
-      const response = await fetch("https://sandbox.cruisebound-qa.com/sailings", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      cache: "no-store"
-    })
-    
-      //const data = await response.json();
-      //setSailings(data.results || []);
-      
-    } catch (error) {
-      console.error("Error loading sailing data:", error);
-    }
-      */
-     setSailings(jsonData.results);
-  };
+  try {
+    const response = await fetch("/api/sailings");
+    const data = await response.json();
+    setSailings(data.results || []);
+  } catch (error) {
+    console.error("Error loading sailing data:", error);
+  }
+  //setSailings(jsonData.response);
+};
 
+  
   useEffect(() => {
     loadSailingData();
   }, []);
