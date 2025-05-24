@@ -1,6 +1,8 @@
+const API_URL = process.env.API_URL;
+
 export async function GET() {
   try {
-    const res = await fetch("https://sandbox.cruisebound-qa.com/sailings", {
+    const res = await fetch(API_URL, {
       headers: { "Content-Type": "application/json" }
     });
     const data = await res.json();
